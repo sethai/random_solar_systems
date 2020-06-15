@@ -22,4 +22,4 @@ This is the result.
 - [ ] Add vector graphics and export as svg
 - [ ] Add texture for the image
 - [ ] Random texture on planets (not plain color)
-- [ ] Different color sets for sun / planets
+- [x] Different color sets for sun / planets

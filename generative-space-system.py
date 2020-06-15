@@ -4,8 +4,11 @@ import math
 import random
 import os
 
-list_of_colors = [(145, 185, 141), (229, 192, 121), (210, 191, 88), (140, 190, 178), (255, 183, 10), (189, 190, 220), (221, 79, 91), (16, 182, 98), (227, 146, 80), (241, 133, 123),
-                  (110, 197, 233), (235, 205, 188), (197, 239, 247), (190, 144, 212), (41, 241, 195), (101, 198, 187), (255, 246, 143), (243, 156, 18), (189, 195, 199), (243, 241, 239)]
+planet_list_of_colors = [(145, 185, 141), (229, 192, 121), (210, 191, 88),
+                         (140, 190, 178), (189, 190, 220), (221, 79, 91), (16, 182, 98), (227, 146, 80), (241, 133, 123), (110, 197, 233), (235, 205, 188), (197, 239, 247), (190, 144, 212), (41, 241, 195), (101, 198, 187), (255, 246, 143), (189, 195, 199), (243, 241, 239)]
+
+sun_list_of_colors = [(255, 183, 10), (221, 79, 91), (227, 146, 80),
+                      (241, 133, 123), (255, 246, 143), (243, 156, 18), (243, 241, 239)]
 
 
 def draw_filled_circle(img, position, radius, color, ):
@@ -45,7 +48,8 @@ def main():
     parser.add_argument("-bs", "--bordersize", help=".", default=50, type=int)
     parser.add_argument(
         "-c", "-center", help="solar system centered on image", action="store_true")
-    parser.add_argument("-co", "--colororbit", help="orbit lines same color as planet", action="store_true")
+    parser.add_argument("-co", "--colororbit",
+                        help="orbit lines same color as planet", action="store_true")
     args = parser.parse_args()
 
     width = args.width
@@ -60,7 +64,7 @@ def main():
     orbit_color = (153, 153, 153)
     draw_background(screen, background_color)
 
-    sun_color = random.choice(list_of_colors)
+    sun_color = random.choice(sun_list_of_colors)
     sun_position = (int(width/2), sun_center)
     draw_filled_circle(screen, sun_position, sun_size, sun_color)
     distance_between_planets = 20
@@ -72,9 +76,9 @@ def main():
     max_size = 70
 
     for x_pos in range(1, 20):
-        rand_color = random.choice(list_of_colors)
+        rand_color = random.choice(planet_list_of_colors)
         while (rand_color is last_color):
-            rand_color = random.choice(list_of_colors)
+            rand_color = random.choice(planet_list_of_colors)
         if (args.colororbit):
             orbit_color = rand_color
         next_size = random.randint(min_size, max_size)
