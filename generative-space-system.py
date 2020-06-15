@@ -45,6 +45,7 @@ def main():
     parser.add_argument("-bs", "--bordersize", help=".", default=50, type=int)
     parser.add_argument(
         "-c", "-center", help="solar system centered on image", action="store_true")
+    parser.add_argument("-co", "--colororbit", help="orbit lines same color as planet", action="store_true")
     args = parser.parse_args()
 
     width = args.width
@@ -71,6 +72,11 @@ def main():
     max_size = 70
 
     for x_pos in range(1, 20):
+        rand_color = random.choice(list_of_colors)
+        while (rand_color is last_color):
+            rand_color = random.choice(list_of_colors)
+        if (args.colororbit):
+            orbit_color = rand_color
         next_size = random.randint(min_size, max_size)
         next_center = last_center - last_size - \
             (next_size * 2) - distance_between_planets
@@ -83,9 +89,6 @@ def main():
                                  (border_size * 2, next_center), (width-(border_size*2), next_center), 4)
             draw_filled_circle(screen, (int(width/2), next_center),
                                int(next_size*1.3), background_color)
-            rand_color = random.choice(list_of_colors)
-            while (rand_color is last_color):
-                rand_color = random.choice(list_of_colors)
             last_color = rand_color
             draw_filled_circle(
                 screen, (int(width/2), next_center), next_size, rand_color)

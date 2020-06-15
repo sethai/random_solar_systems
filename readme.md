@@ -12,7 +12,7 @@ This is the result.
 ## TODO list:
 
 - [x] Rewrite the base script using pygame
-- [ ] Make orbit lines the color of planets
+- [x] Make orbit lines the color of planets
 - [ ] Add random Asteroid belt
 - [ ] Make Asteroid shapes random
 - [ ] Add moons to planets
