@@ -96,8 +96,14 @@ def main():
             max_size += 5 * x_pos
     draw_border(screen, border_size, sun_color, width, height)
     pygame.display.update()
-    fname = "generated_image.png"
-    pygame.image.save(screen, fname)
+    fname = "solar_system-" + "width-" + str(width) + "-height-" + str(height)
+    if(args.orbit):
+        fname += '-orbit'
+    elif(args.line):
+        fname += '-flat'
+    fname += ".png"
+    path_to_save = os.path.join('generated_img', fname)
+    pygame.image.save(screen, path_to_save)
 
 
 if __name__ == "__main__":
